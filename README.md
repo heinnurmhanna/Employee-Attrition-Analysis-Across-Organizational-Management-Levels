@@ -105,6 +105,10 @@ The purpose of the process stage is to prepare the dataset for analysis by clean
 
 The dataset was downloaded from Kaggle and uploaded to Google BigQuery, where all further data preparation and analysis were conducted. Importing the dataset into BigQuery ensures that the data is stored in a structured database environment where it can be queried and analyzed efficiently.
 
+BigQuery was chosen because it allows efficient querying of structured datasets using SQL, which is well suited for tasks such as filtering, grouping, and calculating statistics.
+
+Since the main objective of this project is to analyze employee attrition across management levels using aggregated comparisons, SQL provides a clear and efficient approach. While tools such as R are often used for advanced statistical modeling, the focus of this project is data preparation and descriptive analysis, making BigQuery the more appropriate tool.
+
 ## 3.2 Verifying the Dataset Structure ##
 
 After importing the dataset into BigQuery, the first step was to verify that the dataset was successfully loaded and that the number of records matched expectations.
