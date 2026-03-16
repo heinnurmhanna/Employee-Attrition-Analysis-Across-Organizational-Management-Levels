@@ -39,11 +39,11 @@ The results of this analysis may help organizations:
 
 # 2. PREPARE #
 
-## 3.1 Data Source ## 
+## 2.1 Data Source ## 
 
 The analysis uses the IBM HR Analytics Employee Attrition dataset, available on Kaggle. The dataset contains employee information related to demographics, job characteristics, salary, job satisfaction, and employment history. The dataset is commonly used in HR analytics and provides a suitable foundation for studying employee attrition patterns.
 
-## 3.2 Key Variables Used in the Analysis ##
+## 2.2 Key Variables Used in the Analysis ##
 
 Important variables for this study include:
 - _Attrition_ – indicates whether the employee left the company
@@ -60,7 +60,7 @@ Important variables for this study include:
 
 These variables allow analysis of how demographic factors, work conditions, and organizational structure relate to employee attrition.
 
-## 3.3 Definition of Management Levels ##
+## 2.3 Definition of Management Levels ##
 
 To analyze attrition across organizational hierarchy, employees are grouped into management categories based on JobLevel:
 
