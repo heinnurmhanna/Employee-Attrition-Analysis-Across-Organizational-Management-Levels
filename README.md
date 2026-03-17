@@ -171,10 +171,8 @@ This result confirms that the dataset is complete for these important analytical
 To make the analysis easier and more meaningful, additional variables can be created.
 
 In this project two new variables are created:
-
-management_level – groups employees into hierarchical levels
-
-attrition_flag – converts the attrition variable into a numerical value
+- _management_level_ – groups employees into hierarchical levels
+- _attrition_flag_ – converts the attrition variable into a numerical value
 
 This transformation allows easier grouping and calculation of attrition rates.
 
