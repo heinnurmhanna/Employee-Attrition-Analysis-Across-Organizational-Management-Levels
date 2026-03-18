@@ -464,3 +464,5 @@ ORDER BY
 - **Higher management levels are more stable:** Senior management and executive leadership show low and inconsistent attrition rates, suggesting stronger job stability and long-term commitment.
 
 The analysis shows that employee attrition is strongly related to tenure, particularly in the early stages of employment. Employees are most likely to leave within the first two years, especially at lower management levels.
+
+
