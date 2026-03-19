@@ -1,3 +1,18 @@
+# Töö kokkuvõte - spikker #
+
+**Eesmärk:** Selle projekti eesmärk on uurida töötajate lahkumist (attrition) organisatsiooni erinevatel juhtimistasemetel ning tuvastada peamised tegurid, mis seda mõjutavad. 
+
+Algselt oli plaan kasutada enda töökoha andmeid, kuid kuna need olid piiratud nii mahu kui ka mitmekesisuse poolest, otsustati kasutada Kaggle’i platvormilt pärit IBM HR Analytics andmestikku. See võimaldas kasutada mitmekülgsemaid analüüsimeetodeid ja tööriistu, eelkõige SQL-i ja Google BigQueryt, ning läbi viia põhjalikuma analüüsi.
+
+Analüüsi **keskne uurimisküsimus on**, kuidas erineb töötajate lahkumine organisatsiooni juhtimistasemete lõikes. Lisaks sellele uuriti, millisel tasemel on lahkumine kõige suurem ning kas lahkumine on seotud selliste teguritega nagu palk, töörahulolu ja töökogemus. Samuti käsitleti, kas töötingimused, näiteks ületunnid ja töö- ja eraelu tasakaal, võivad mõjutada töötajate lahkumist.
+
+Andmestik pärineb IBM HR Analytics simulatsioonist ning sisaldab infot töötajate demograafiliste tunnuste, ametikohtade, palga, rahulolu ja lahkumise kohta. Andmed imporditi Google BigQuery keskkonda, kus viidi läbi kogu andmete töötlemine ja analüüs. Andmete kvaliteeti kontrolliti mitmes etapis: veenduti, et andmestik sisaldab õiget arvu kirjeid, duplikaate ei esine ning olulistes tunnustes puuduvad väärtused puuduvad. Analüüsi lihtsustamiseks loodi täiendavad tunnused, näiteks juhtimistaseme kirjeldus (management_level) ja binaarne tunnus lahkumise kohta (attrition_flag).
+
+**Analüüsi tulemused näitavad selget seost juhtimistaseme ja töötajate lahkumise vahel.** Kõrgeim lahkumismäär esineb madalaimal ehk entry-level tasemel, kus ligikaudu veerand töötajatest lahkub. Mida kõrgem on juhtimistasand, seda väiksem on lahkumismäär, kusjuures keskastme ja tippjuhtkonna tasemel on see märkimisväärselt madalam. See viitab sellele, et madalama taseme töötajad on organisatsioonist lahkumise suhtes kõige haavatavamad.
+
+Uurin nii palka, töörahulolu, töökogemust. Lisaks on plaanis kasutada Tableaud visuaalide tegemiseks ning viimasena teen kokkuvõtte. 
+
+
 # INTRODUCTION # 
 
 Employee attrition is a critical issue for organizations because frequent employee turnover can increase recruitment costs, disrupt work processes, and negatively affect organizational performance. Understanding the factors that influence employee attrition is therefore essential for effective human resource management.
