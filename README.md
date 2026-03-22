@@ -96,7 +96,7 @@ The dataset was evaluated using the ROCCC framework, which assesses reliability,
 
 **R - Reliable**
 
-The dataset is widely used in HR analytics learning environments and educational research. Although it is not an official corporate dataset, it is structured and commonly used for analytical practice.
+The dataset is widely used in HR analytics learning environments; however, it is synthetic and may not fully represent real-world organizational behavior.
 
 **O - Original**
 
@@ -480,4 +480,183 @@ ORDER BY
 
 The analysis shows that employee attrition is strongly related to tenure, particularly in the early stages of employment. Employees are most likely to leave within the first two years, especially at lower management levels.
 
+## 4.5 Overtime and Attrition by Management Level ##
 
+The purpose of this section is to examine whether overtime is associated with higher employee attrition and whether this relationship differs across organizational management levels.
+
+Overtime is often linked to increased workload, stress, and reduced work-life balance. If employees who work overtime are more likely to leave the organization, this may indicate that workload management plays a significant role in employee retention.
+
+This analysis compares employees who work overtime with those who do not. In addition, the comparison is extended across management levels to determine whether the impact of overtime varies depending on organizational hierarchy.
+
+### 4.5.1 Overtime and Attrition (overall) ###
+
+```sql
+SELECT
+    OverTime,
+    COUNT(*) AS total_employees,
+    SUM(attrition_flag) AS employees_left,
+    ROUND(AVG(attrition_flag) * 100, 2) AS attrition_rate_percent
+FROM `hr-analytics-hh.employee_data.hr_attrition_prepared`
+GROUP BY OverTime
+ORDER BY attrition_rate_percent DESC;
+```
+
+| OverTime | Total Employees | Employees Left | Attrition Rate (%) |
+| -------- | --------------- | -------------- | ------------------ |
+| true     | 416             | 127            | 30.53              |
+| false    | 1054            | 110            | 10.44              |
+
+Employees who work overtime have a significantly higher attrition rate (30.53%) compared to those who do not (10.44%). This means that attrition is nearly three times higher among employees working overtime, indicating a strong relationship between overtime and employee turnover.
+
+This pattern suggests that factors such as increased workload, stress, or reduced work-life balance may contribute to higher attrition among employees who work overtime. However, this represents an association rather than a causal relationship.
+
+### 4.5.2 Overtime and Attrition (overall) ###
+
+```sql
+SELECT
+    management_level,
+    OverTime,
+    COUNT(*) AS total_employees,
+    SUM(attrition_flag) AS employees_left,
+    ROUND(AVG(attrition_flag) * 100, 2) AS attrition_rate_percent
+FROM `hr-analytics-hh.employee_data.hr_attrition_prepared`
+GROUP BY management_level, OverTime
+ORDER BY
+    CASE
+        WHEN management_level = 'Entry-level employees' THEN 1
+        WHEN management_level = 'Junior specialists' THEN 2
+        WHEN management_level = 'Middle management / experienced specialists' THEN 3
+        WHEN management_level = 'Senior management' THEN 4
+        WHEN management_level = 'Executive leadership' THEN 5
+        ELSE 6
+    END,
+    OverTime;
+```
+| Management Level                            | OverTime | Total Employees | Employees Left | Attrition Rate (%) |
+| ------------------------------------------- | -------- | --------------- | -------------- | ------------------ |
+| Entry-level employees                       | false    | 387             | 61             | 15.76              |
+| Entry-level employees                       | true     | 156             | 82             | 52.56              |
+| Junior specialists                          | false    | 388             | 26             | 6.70               |
+| Junior specialists                          | true     | 146             | 26             | 17.81              |
+| Middle management / experienced specialists | false    | 155             | 19             | 12.26              |
+| Middle management / experienced specialists | true     | 63              | 13             | 20.63              |
+| Senior management                           | false    | 73              | 2              | 2.74               |
+| Senior management                           | true     | 33              | 3              | 9.09               |
+| Executive leadership                        | false    | 51              | 2              | 3.92               |
+| Executive leadership                        | true     | 18              | 3              | 16.67              |
+
+Employees who work overtime consistently show higher attrition rates across all management levels. The effect is strongest among entry-level employees, where attrition increases from 15.76% (no overtime) to 52.56% (with overtime). A similar pattern is observed among junior specialists and middle management, although the differences are less extreme.
+
+At higher management levels, attrition remains relatively low overall, but overtime is still associated with increased turnover. For example, senior management attrition rises from 2.74% to 9.09%, and executive leadership from 3.92% to 16.67%. This suggests that overtime has a negative impact across all levels, although its effect is most pronounced among lower-level employees.
+
+Compared to the previous overall analysis, these results provide a more detailed view by showing how overtime affects different groups. While the earlier results showed that overtime is strongly associated with higher attrition in general, this breakdown reveals that the effect is not uniform and is particularly severe among entry-level employees, indicating that workload pressure may disproportionately affect lower-level staff.
+
+## 4.6 Attrition by Department and Job Role ##
+
+The purpose of this section is to analyze whether employee attrition differs across departments and job roles. This helps determine whether turnover is influenced not only by management level but also by the nature of the work and organizational structure.
+
+Different departments and job roles may involve varying workloads, expectations, and working conditions, which can influence employee retention.
+
+This section includes two main analyses:
+- Attrition by department
+- Attrition by job role
+
+The goal is to identify whether certain departments or roles are associated with higher attrition rates and whether they may help explain differences observed across management levels.
+
+### 4.6.1 Attrition by Department ###
+
+```sql
+SELECT
+    Department,
+    COUNT(*) AS total_employees,
+    SUM(attrition_flag) AS employees_left,
+    ROUND(AVG(attrition_flag) * 100, 2) AS attrition_rate_percent
+FROM `hr-analytics-hh.employee_data.hr_attrition_prepared`
+GROUP BY Department
+ORDER BY attrition_rate_percent DESC;
+```
+| Department             | Total Employees | Employees Left | Attrition Rate (%) |
+| ---------------------- | --------------- | -------------- | ------------------ |
+| Sales                  | 446             | 92             | 20.63              |
+| Human Resources        | 63              | 12             | 19.05              |
+| Research & Development | 961             | 133            | 13.84              |
+
+Attrition rates differ across departments, with Sales (20.63%) and Human Resources (19.05%) showing noticeably higher turnover compared to Research & Development (13.84%). This suggests that employees in Sales and HR may experience conditions that are more strongly associated with leaving, such as higher pressure, workload, or different job expectations.
+
+In contrast, Research & Development has the lowest attrition rate despite having the largest number of employees. This may indicate more stable working conditions, better job satisfaction, or stronger career development opportunities in that department. Overall, the results suggest that department plays an important role in understanding attrition beyond management level alone.
+
+### 4.6.2 Attrition by Job Role ###
+
+```sql
+SELECT
+    JobRole,
+    COUNT(*) AS total_employees,
+    SUM(attrition_flag) AS employees_left,
+    ROUND(AVG(attrition_flag) * 100, 2) AS attrition_rate_percent
+FROM `hr-analytics-hh.employee_data.hr_attrition_prepared`
+GROUP BY JobRole
+ORDER BY attrition_rate_percent DESC;
+```
+
+| Job Role                  | Total Employees | Employees Left | Attrition Rate (%) |
+| ------------------------- | --------------- | -------------- | ------------------ |
+| Sales Representative      | 83              | 33             | 39.76              |
+| Laboratory Technician     | 259             | 62             | 23.94              |
+| Human Resources           | 52              | 12             | 23.08              |
+| Sales Executive           | 326             | 57             | 17.48              |
+| Research Scientist        | 292             | 47             | 16.10              |
+| Manufacturing Director    | 145             | 10             | 6.90               |
+| Healthcare Representative | 131             | 9              | 6.87               |
+| Manager                   | 102             | 5              | 4.90               |
+| Research Director         | 80              | 2              | 2.50               |
+
+Attrition varies significantly across job roles, with the highest turnover observed among Sales Representatives (39.76%), followed by Laboratory Technicians and Human Resources roles (around 23%). This suggests that certain operational or customer-facing roles may experience higher pressure, workload, or less favorable working conditions, leading to increased likelihood of leaving.
+
+In contrast, managerial and senior roles such as Manager (4.90%) and Research Director (2.50%) show much lower attrition rates, indicating greater job stability and retention. Overall, the results suggest that job role is a strong factor in explaining attrition, and that turnover risk is particularly concentrated in lower-level or more operational positions rather than leadership roles.
+
+### 4.6.5 Combined View: Department within Management Levels ###
+
+```sql
+SELECT
+    management_level,
+    Department,
+    COUNT(*) AS total_employees,
+    SUM(attrition_flag) AS employees_left,
+    ROUND(AVG(attrition_flag) * 100, 2) AS attrition_rate_percent
+FROM `hr-analytics-hh.employee_data.hr_attrition_prepared`
+GROUP BY management_level, Department
+ORDER BY
+    CASE
+        WHEN management_level = 'Entry-level employees' THEN 1
+        WHEN management_level = 'Junior specialists' THEN 2
+        WHEN management_level = 'Middle management / experienced specialists' THEN 3
+        WHEN management_level = 'Senior management' THEN 4
+        WHEN management_level = 'Executive leadership' THEN 5
+        ELSE 6
+    END,
+    attrition_rate_percent DESC;
+```
+
+| Management Level                            | Department             | Total Employees | Employees Left | Attrition Rate (%) |
+| ------------------------------------------- | ---------------------- | --------------- | -------------- | ------------------ |
+| Entry-level employees                       | Sales                  | 76              | 32             | 42.11              |
+| Entry-level employees                       | Human Resources        | 33              | 10             | 30.30              |
+| Entry-level employees                       | Research & Development | 434             | 101            | 23.27              |
+| Junior specialists                          | Sales                  | 240             | 37             | 15.42              |
+| Junior specialists                          | Research & Development | 281             | 15             | 5.34               |
+| Junior specialists                          | Human Resources        | 13              | 0              | 0.00               |
+| Middle management / experienced specialists | Human Resources        | 6               | 2              | 33.33              |
+| Middle management / experienced specialists | Sales                  | 83              | 17             | 20.48              |
+| Middle management / experienced specialists | Research & Development | 129             | 13             | 10.08              |
+| Senior management                           | Sales                  | 34              | 4              | 11.76              |
+| Senior management                           | Research & Development | 68              | 1              | 1.47               |
+| Senior management                           | Human Resources        | 4               | 0              | 0.00               |
+| Executive leadership                        | Sales                  | 13              | 2              | 15.38              |
+| Executive leadership                        | Research & Development | 49              | 3              | 6.12               |
+| Executive leadership                        | Human Resources        | 7               | 0              | 0.00               |
+
+Attrition varies significantly across both management levels and departments. The highest attrition is observed among entry-level employees in Sales (42.11%), followed by entry-level employees in Human Resources (30.30%) and Research & Development (23.27%). This suggests that attrition is particularly concentrated among lower-level employees, especially in Sales-related roles. Across all management levels, Sales consistently shows higher attrition compared to Research & Development, which tends to have the lowest rates.
+
+At higher management levels, attrition remains relatively low, especially in Research & Development and Human Resources, where some groups show near-zero attrition. However, small group sizes (e.g., HR in middle and senior levels) should be interpreted cautiously. Overall, these results indicate that both department and management level jointly influence attrition patterns, with the strongest turnover risk concentrated in lower-level roles within high-pressure departments such as Sales.
+
+When comparing all results from section 4.6, a consistent pattern emerges: Sales and certain operational roles (e.g., Sales Representative) show the highest attrition, while Research & Development and higher-level roles show greater stability. The combined analysis confirms that attrition is not driven by a single factor but is influenced by the interaction of job role, department, and management level, with the highest risk concentrated in entry-level and customer-facing positions.
