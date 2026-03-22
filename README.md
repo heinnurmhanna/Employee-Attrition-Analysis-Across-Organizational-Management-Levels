@@ -816,3 +816,75 @@ Employees who work overtime have a much higher attrition rate than those who do 
 **Overall conclusion**
 
 The main research question asked how employee attrition differs across organizational management levels. The answer is that attrition is highest among entry-level employees and generally lower at higher management levels. However, management level is not the only factor. Attrition is also related to salary, job satisfaction, work experience, department, job role, and overtime. The highest risk of leaving is concentrated among lower-level employees, especially those who are lower paid, less satisfied, early in their careers, and working overtime.
+
+# 5. SHARE #
+
+The purpose of the share stage is to communicate the key findings of the analysis in a clear and accessible way. While the previous section focused on numerical analysis and interpretation, visualizations help highlight patterns, trends, and relationships more effectively.
+
+Visual representations are particularly useful in identifying differences across groups, understanding the strength of relationships between variables, and supporting data-driven decision-making. In this study, visualizations are used to illustrate how employee attrition varies across management levels and how it is influenced by salary, job satisfaction, work experience, department, and overtime.
+
+## 5.1 Attrition by Management Level ##
+
+This visualization presents attrition rates across different management levels using a bar chart.
+
+This view is important because it directly addresses the main research question: how attrition differs across organizational hierarchy. By comparing attrition rates visually, it becomes easier to identify which levels experience the highest turnover.
+
+The visualization clearly highlights that attrition is concentrated among entry-level employees, while higher management levels show significantly lower turnover. This confirms that attrition is not evenly distributed across the organization and helps identify where retention efforts should be prioritized.
+
+<img width="999" height="799" alt="Dashboard 2" src="https://github.com/user-attachments/assets/5691188f-04f7-4ec7-a067-6c26cc83b675" />
+
+## 5.2 Attrition by Income Group ##
+
+This visualization shows attrition rates across income groups (low, medium, and high) using a bar chart.
+
+This view is important because it helps assess whether compensation is related to employee turnover. Salary is a fundamental factor in employment decisions, and visualizing attrition across income levels makes it easier to evaluate its impact.
+
+The chart typically shows that employees in the low-income group have the highest attrition, while higher-income groups show lower turnover. This supports the conclusion that lower compensation is associated with higher attrition and suggests that salary may play a key role in employee retention.
+
+## 5.3 Job Satisfaction and Attrition by Management Level ##
+
+This visualization presents the relationship between job satisfaction and attrition across management levels, for example using a grouped bar chart or heatmap.
+
+This view is important because it allows comparison of how job satisfaction affects different employee groups. Instead of looking at satisfaction in isolation, this visualization shows whether its impact varies across the organizational hierarchy.
+
+The results typically indicate that job satisfaction has the strongest effect on attrition among entry-level employees, while its impact is weaker at higher management levels. This suggests that improving job satisfaction may be particularly important for retaining lower-level employees.
+
+## 5.4 Attrition by Work Experience ##
+
+This visualization shows attrition rates across different experience groups (e.g., 0–2 years, 2–5 years, etc.), using a bar chart or line chart.
+
+This view is important because it helps identify critical periods in an employee’s career where attrition risk is highest. Instead of relying on averages, grouping employees by tenure provides a clearer picture of when employees are most likely to leave.
+
+The visualization typically shows that attrition is highest during the first two years and decreases with longer tenure. This highlights the importance of early-career retention strategies and suggests that organizations should focus on supporting employees during their initial period.
+
+## 5.5 5Attrition by Overtime ##
+
+This visualization compares attrition rates between employees who work overtime and those who do not.
+
+This view is important because it helps evaluate the role of workload in employee turnover. Overtime is often associated with stress and reduced work-life balance, and visualizing its impact makes this relationship more apparent.
+
+The chart typically shows a significantly higher attrition rate among employees who work overtime. This suggests that workload management may be a key factor in reducing employee turnover.
+
+## 5.6. Attrition by Department and Job Role ##
+
+This visualization presents attrition rates across departments and job roles, using bar charts.
+
+This view is important because it highlights differences in attrition that are not explained by management level alone. It allows identification of specific organizational units or roles where turnover is concentrated.
+
+The results typically show that departments such as Sales and roles such as Sales Representative have the highest attrition, while roles in Research & Development and higher-level positions show lower turnover. This indicates that the nature of the work and working conditions also influence attrition.
+
+## 5.7 Combined View: Management Level and Overtime ##
+
+This visualization combines management level and overtime to show how workload affects different employee groups, typically using a grouped bar chart.
+
+This view is important because it reveals interactions between variables. Instead of analyzing overtime separately, it shows how its impact varies across the organizational hierarchy.
+
+The visualization typically demonstrates that overtime has the strongest effect on entry-level employees, where attrition increases sharply when overtime is present. This suggests that workload pressure disproportionately affects lower-level employees.
+
+## 5.8 Summary of Visual Findings ##
+
+The visualizations confirm that employee attrition is not evenly distributed across the organization. Instead, it is concentrated among entry-level employees, lower-income groups, and employees with short tenure. Additional patterns show that overtime and job satisfaction further influence attrition, especially when combined with other risk factors.
+
+Overall, the visual analysis supports the conclusion that attrition is influenced by multiple interacting factors. By presenting these relationships visually, the findings become easier to interpret and more useful for identifying high-risk employee groups and informing targeted retention strategies.
+
+
