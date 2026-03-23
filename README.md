@@ -841,6 +841,9 @@ This view is important because it helps assess whether compensation is related t
 
 The chart typically shows that employees in the low-income group have the highest attrition, while higher-income groups show lower turnover. This supports the conclusion that lower compensation is associated with higher attrition and suggests that salary may play a key role in employee retention.
 
+<img width="999" height="799" alt="Dashboard 1" src="https://github.com/user-attachments/assets/e898305e-5059-4f15-87ab-15afb2885c8f" />
+
+
 ## 5.3 Job Satisfaction and Attrition by Management Level ##
 
 This visualization presents the relationship between job satisfaction and attrition across management levels, for example using a grouped bar chart or heatmap.
