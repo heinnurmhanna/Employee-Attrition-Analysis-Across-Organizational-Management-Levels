@@ -852,6 +852,10 @@ This view is important because it allows comparison of how job satisfaction affe
 
 The results typically indicate that job satisfaction has the strongest effect on attrition among entry-level employees, while its impact is weaker at higher management levels. This suggests that improving job satisfaction may be particularly important for retaining lower-level employees.
 
+<img width="999" height="799" alt="Dashboard 3" src="https://github.com/user-attachments/assets/08a7980e-f190-4140-9268-0253edc0a950" />
+
+This heatmap shows that job satisfaction has a strong impact on attrition, particularly at the entry-level, where employees with low satisfaction (level 1) have the highest attrition rate (39%), which steadily decreases as satisfaction increases. In contrast, higher management levels such as senior and executive positions exhibit consistently low attrition regardless of satisfaction levels, indicating greater stability. While job satisfaction still influences attrition among junior and middle management employees, the effect is less pronounced than at the entry level. Overall, the visualization suggests that improving job satisfaction is especially critical for retaining lower-level employees, whereas higher-level employees are less sensitive to changes in satisfaction.
+
 ## 5.4 Attrition by Work Experience ##
 
 This visualization shows attrition rates across different experience groups (e.g., 0–2 years, 2–5 years, etc.), using a bar chart or line chart.
