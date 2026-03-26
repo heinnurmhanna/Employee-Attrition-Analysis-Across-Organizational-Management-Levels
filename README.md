@@ -831,6 +831,8 @@ This view is important because it directly addresses the main research question:
 
 <img width="999" height="799" alt="Dashboard 2" src="https://github.com/user-attachments/assets/5691188f-04f7-4ec7-a067-6c26cc83b675" />
 
+The visualization shows that attrition is highest among entry-level employees (26.3%), significantly exceeding all other management levels, which indicates that lower-level employees are the most likely to leave the organization. Attrition decreases as management level increases, with middle management showing moderate turnover (14.7%), while junior, executive, and especially senior management levels have considerably lower attrition rates. This pattern suggests a clear negative relationship between organizational level and attrition, where employees in higher positions are more stable, likely due to better compensation, career progression, and job security.
+
 ## 5.2 Attrition by Income Group ##
 
 This visualization shows attrition rates across income groups (low, medium, and high) using a bar chart.
@@ -839,6 +841,7 @@ This view is important because it helps assess whether compensation is related t
 
 <img width="999" height="799" alt="Dashboard 1" src="https://github.com/user-attachments/assets/e898305e-5059-4f15-87ab-15afb2885c8f" />
 
+The visualization shows a clear relationship between income level and attrition, with employees in the low-income group experiencing the highest attrition rate (28.6%), which is more than double compared to medium (12.0%) and high-income groups (10.8%). Attrition decreases as income increases, indicating that higher compensation is associated with better employee retention. This suggests that salary plays a significant role in employees’ decisions to stay or leave, and that improving compensation, particularly for lower-paid employees, could be an effective strategy for reducing turnover.
 
 ## 5.3 Job Satisfaction and Attrition by Management Level ##
 
@@ -868,13 +871,20 @@ This visualization compares attrition rates between employees who work overtime 
 
 This view is important because it helps evaluate the role of workload in employee turnover. Overtime is often associated with stress and reduced work-life balance, and visualizing its impact makes this relationship more apparent.
 
-The chart typically shows a significantly higher attrition rate among employees who work overtime. This suggests that workload management may be a key factor in reducing employee turnover.
+<img width="999" height="799" alt="Dashboard 5" src="https://github.com/user-attachments/assets/6f12593c-977e-45cd-804a-c6725beaf3d2" />
+
+The visualization shows a strong relationship between overtime and employee attrition, with employees who work overtime experiencing a significantly higher attrition rate (30.5%) compared to those who do not (10.4%). This indicates that employees working overtime are nearly three times more likely to leave the organization. The results suggest that increased workload, stress, and reduced work-life balance associated with overtime may be key factors driving employee turnover, highlighting the importance of managing workload to improve retention.
 
 ## 5.6. Attrition by Department and Job Role ##
 
 This visualization presents attrition rates across departments and job roles, using bar charts.
 
 This view is important because it highlights differences in attrition that are not explained by management level alone. It allows identification of specific organizational units or roles where turnover is concentrated.
+
+<img width="999" height="799" alt="Dashboard 6" src="https://github.com/user-attachments/assets/858f24e1-6ff9-40f7-a9ff-544d5f93c2e7" />
+
+<img width="999" height="799" alt="Dashboard 7" src="https://github.com/user-attachments/assets/779b8d6d-6448-4629-89b4-7a6b80892489" />
+
 
 The results typically show that departments such as Sales and roles such as Sales Representative have the highest attrition, while roles in Research & Development and higher-level positions show lower turnover. This indicates that the nature of the work and working conditions also influence attrition.
 
@@ -883,6 +893,8 @@ The results typically show that departments such as Sales and roles such as Sale
 This visualization combines management level and overtime to show how workload affects different employee groups, typically using a grouped bar chart.
 
 This view is important because it reveals interactions between variables. Instead of analyzing overtime separately, it shows how its impact varies across the organizational hierarchy.
+
+
 
 The visualization typically demonstrates that overtime has the strongest effect on entry-level employees, where attrition increases sharply when overtime is present. This suggests that workload pressure disproportionately affects lower-level employees.
 
