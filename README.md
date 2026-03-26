@@ -280,7 +280,7 @@ ORDER BY attrition_rate_percent DESC;
 **Interpretation of Results:**
 - The results show that attrition is highest among entry-level employees (26.34%), which is significantly higher than at all other management levels. This indicates that lower-level employees are the most likely to leave the organization.
 - Attrition is highest at the lowest management level and generally lower at higher levels, although the pattern is not strictly monotonic.
-- This pattern suggests that employees in higher positions are more stable, likely due to better compensation, career opportunities, and working conditions.
+- This pattern suggests that employees in higher positions are more stable, which may be associated with better compensation, career opportunities, and working conditions.
 
 ## 4.2 Salary and Attrition ##
 
@@ -306,7 +306,7 @@ FROM `hr-analytics-hh.employee_data.hr_attrition_prepared`
 GROUP BY income_group;
 ```
 
-| Income Group  | Income Range       | Attrition Rate |
+| Income Group  | Income Category    | Attrition Rate |
 | ------------- | ------------------ | -------------- |
 | Low income    | <     3000         | 28.61%         |
 | Medium income | ~3000–7000         | 12.03%         |
@@ -788,7 +788,7 @@ This view is important because it directly addresses the main research question:
 
 <img width="999" height="799" alt="Dashboard 2" src="https://github.com/user-attachments/assets/5691188f-04f7-4ec7-a067-6c26cc83b675" />
 
-The visualization shows that attrition is highest among entry-level employees (26.3%), significantly exceeding all other management levels, which indicates that lower-level employees are the most likely to leave the organization. Attrition decreases as management level increases, with middle management showing moderate turnover (14.7%), while junior, executive, and especially senior management levels have considerably lower attrition rates. This pattern suggests a clear negative relationship between organizational level and attrition, where employees in higher positions are more stable, likely due to better compensation, career progression, and job security.
+The visualization shows that attrition is highest among entry-level employees (26.3%), significantly exceeding all other management levels, which indicates that lower-level employees are the most likely to leave the organization. Attrition is highest at the lowest level and generally lower at higher levels, with middle management showing moderate turnover (14.7%), while junior, executive, and especially senior management levels have considerably lower attrition rates. This pattern suggests a clear negative relationship between organizational level and attrition, where employees in higher positions are more stable, likely due to better compensation, career progression, and job security.
 
 ## 5.2 Attrition by Income Group ##
 
@@ -840,7 +840,7 @@ This view is important because it highlights differences in attrition that are n
 
 <img width="999" height="799" alt="Dashboard 6" src="https://github.com/user-attachments/assets/858f24e1-6ff9-40f7-a9ff-544d5f93c2e7" />
 
-The visualization shows that attrition varies across departments, with Sales having the highest attrition rate (20.6%), followed by Human Resources (19.0%), while Research & Development has the lowest (13.8%). This indicates that turnover is more concentrated in certain departments, particularly in sales.
+The visualization shows that attrition varies across departments, with Sales having the highest attrition rate (20.6%), followed by Human Resources (19.0%), while Research & Development has the lowest (13.8%). This indicates that turnover is more concentrated in certain departments, particularly in Sales.
 
 <img width="999" height="799" alt="Dashboard 7" src="https://github.com/user-attachments/assets/779b8d6d-6448-4629-89b4-7a6b80892489" />
 
