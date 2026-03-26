@@ -198,7 +198,7 @@ Creating these variables simplifies later analysis and allows clearer comparison
 
 Before starting the analysis, the prepared dataset needs to be checked to make sure everything is correct.  This step confirms that the dataset is correctly structured and ready for the analytical phase, where attrition rates will be calculated and compared across management levels.
 
-During this step, the following things are checked:
+During this step, the following aspects are verified:
 - the management level grouping is correct
 - the attrition_flag variable correctly shows whether an employee left (1) or stayed (0)
 - the dataset is ready for analysis
@@ -222,13 +222,27 @@ ORDER BY total_employees DESC;
 
 The results show how employees are distributed across different management levels in the dataset.
 
+```sql
+SELECT Attrition, attrition_flag, COUNT(*) AS n
+FROM `hr-analytics-hh.employee_data.hr_attrition_prepared`
+GROUP BY Attrition, attrition_flag
+ORDER BY Attrition, attrition_flag;
+```
+
+| Attrition | attrition_flag | n    |
+|-----------|----------------|------|
+| false     | 0              | 1233 |
+| true      | 1              | 237  |
+
+The validation confirms that the Attrition variable is stored as a boolean field, where false is correctly mapped to 0 and true to 1. This shows that the attrition_flag variable was created correctly and can be reliably used in further attrition rate calculations.
+
 **It is important to note that these numbers include both employees who are currently working and those who have left the company. Therefore, this table does not represent attrition yet, but only the overall structure of the dataset.**
 
-The results indicate that most employees are in entry-level and junior specialist positions, while fewer employees are in higher management levels. This type of distribution is typical in organizations with a hierarchical structure.
+The results indicate that most employees are in entry-level and junior specialist positions, while fewer employees are in higher management levels. This distribution is consistent with a typical hierarchical organizational structure, where the number of employees decreases as management level increases.
 
 At this stage, the main purpose of this analysis is to verify that the management level grouping has been applied correctly and that all categories are present.
 
-This step confirms that the dataset is correctly structured and ready for further analysis, where attrition rates will be calculated separately.
+Overall, the validation results confirm that the dataset is consistent and suitable for further analysis.
 
 # 4. ANALYSE #
 
@@ -265,9 +279,8 @@ ORDER BY attrition_rate_percent DESC;
 
 **Interpretation of Results:**
 - The results show that attrition is highest among entry-level employees (26.34%), which is significantly higher than at all other management levels. This indicates that lower-level employees are the most likely to leave the organization.
-- Attrition decreases consistently with higher management levels. Middle management shows moderate attrition (14.68%), while senior management (4.72%) and executive leadership (7.25%) have the lowest rates.
+- Attrition is highest at the lowest management level and generally lower at higher levels, although the pattern is not strictly monotonic.
 - This pattern suggests that employees in higher positions are more stable, likely due to better compensation, career opportunities, and working conditions.
-- Overall, there is a clear negative relationship between management level and attrition: as management level increases, attrition decreases.
 
 ## 4.2 Salary and Attrition ##
 
@@ -293,7 +306,7 @@ FROM `hr-analytics-hh.employee_data.hr_attrition_prepared`
 GROUP BY income_group;
 ```
 
-| Income Group  | Avg Monthly Income | Attrition Rate |
+| Income Group  | Income Range       | Attrition Rate |
 | ------------- | ------------------ | -------------- |
 | Low income    | <     3000         | 28.61%         |
 | Medium income | ~3000–7000         | 12.03%         |
@@ -385,7 +398,7 @@ ORDER BY
 | 19  | Executive leadership                               | 3               | 25              | 4.00                   |
 | 20  | Executive leadership                               | 4               | 18              | 5.56                   |
 
-The results show a consistent pattern where lower job satisfaction is associated with higher attrition, but the strength of this relationship differs by management level.
+The clearest negative relationship between job satisfaction and attrition appears among entry-level employees. At higher management levels, the pattern is weaker and less consistent.
 
 - **Entry-level employees**: Attrition is very high at low satisfaction (38.68%) and decreases steadily to 17.96% at the highest satisfaction level. This indicates that job satisfaction is a key driver of turnover at the lowest organizational level.
 - **Junior specialists**: Attrition is lower overall, ranging from 12.75% (low satisfaction) to 5.23% (high satisfaction). The relationship exists but is less pronounced.
@@ -456,6 +469,8 @@ ORDER BY
 | 19  | Executive leadership                               | 2–5 years        | 7.14               |
 | 20  | Executive leadership                               | 6–10 years       | 0.00               |
 
+Results for senior and executive groups should be interpreted cautiously because some experience categories likely contain very small numbers of employees.
+
 **Key Findings**
 - **Highest attrition occurs in early career stages:** Entry-level employees with 0–2 years experience have the highest attrition rate (44.12%), indicating that turnover is most critical in the first years.
 - **Attrition decreases with experience:** Across most management levels, employees with longer tenure (10+ years) have significantly lower attrition rates.
@@ -495,7 +510,7 @@ Employees who work overtime have a significantly higher attrition rate (30.53%) 
 
 This pattern suggests that factors such as increased workload, stress, or reduced work-life balance may contribute to higher attrition among employees who work overtime. However, this represents an association rather than a causal relationship.
 
-### 4.5.2 Overtime and Attrition (overall) ###
+### 4.5.2 Overtime and Attrition by Management Level ###
 
 ```sql
 SELECT
@@ -651,53 +666,12 @@ When comparing all results from section 4.6, a consistent pattern emerges: Sales
 The purpose of this section is to analyze how key factors influencing attrition interact with each other. While previous analyses examined variables individually, this section explores their combined effects to identify high-risk employee groups more precisely. 
 
 This section includes multiple combined analyses:
-- Management level and overtime
 - Income group and job satisfaction
 - Experience and overtime
 
 These combinations provide a deeper understanding of how different factors reinforce or weaken each other.
 
-### 4.7.1 Management Level and Overtime ###
-
-```sql
-SELECT
-    management_level,
-    OverTime,
-    COUNT(*) AS total_employees,
-    SUM(attrition_flag) AS employees_left,
-    ROUND(AVG(attrition_flag) * 100, 2) AS attrition_rate_percent
-FROM `hr-analytics-hh.employee_data.hr_attrition_prepared`
-GROUP BY management_level, OverTime
-ORDER BY
-    CASE
-        WHEN management_level = 'Entry-level employees' THEN 1
-        WHEN management_level = 'Junior specialists' THEN 2
-        WHEN management_level = 'Middle management / experienced specialists' THEN 3
-        WHEN management_level = 'Senior management' THEN 4
-        WHEN management_level = 'Executive leadership' THEN 5
-        ELSE 6
-    END,
-    OverTime;
-```
-
-| Management Level                            | OverTime | Total Employees | Employees Left | Attrition Rate (%) |
-| ------------------------------------------- | -------- | --------------- | -------------- | ------------------ |
-| Entry-level employees                       | false    | 387             | 61             | 15.76              |
-| Entry-level employees                       | true     | 156             | 82             | 52.56              |
-| Junior specialists                          | false    | 388             | 26             | 6.70               |
-| Junior specialists                          | true     | 146             | 26             | 17.81              |
-| Middle management / experienced specialists | false    | 155             | 19             | 12.26              |
-| Middle management / experienced specialists | true     | 63              | 13             | 20.63              |
-| Senior management                           | false    | 73              | 2              | 2.74               |
-| Senior management                           | true     | 33              | 3              | 9.09               |
-| Executive leadership                        | false    | 51              | 2              | 3.92               |
-| Executive leadership                        | true     | 18              | 3              | 16.67              |
-
-Attrition is consistently higher among employees who work overtime across all management levels. The strongest effect is observed among entry-level employees, where attrition increases dramatically from 15.76% (no overtime) to 52.56% (with overtime), indicating that overtime may have a particularly strong impact on lower-level employees.
-
-Although attrition is generally lower at higher management levels, overtime still increases turnover in these groups. For example, senior management attrition rises from 2.74% to 9.09%, and executive leadership from 3.92% to 16.67%. Overall, the results suggest that overtime is an important factor associated with attrition across the entire organizational hierarchy, but its impact is most pronounced among entry-level employees.
-
-### 4.7.2 Income Group and Job Satisfaction ###
+### 4.7.1 Income Group and Job Satisfaction ###
 
 ```sql
 SELECT
@@ -736,11 +710,9 @@ ORDER BY
 | High income   | 3                | 125             | 9              | 7.20               |
 | High income   | 4                | 136             | 13             | 9.56               |
 
-Attrition is highest among employees with both low income and low job satisfaction, reaching 43.48% at the lowest satisfaction level. Across all income groups, attrition generally decreases as job satisfaction increases, indicating a consistent negative relationship between satisfaction and turnover. However, this effect is strongest in the low-income group, where attrition remains relatively high even at higher satisfaction levels.
+Attrition is highest among employees with both low income and low job satisfaction, reaching 43.48% at the lowest satisfaction level. The strongest pattern appears in the low-income group. In medium- and high-income groups, attrition is lower overall, but the relationship with job satisfaction is less strictly linear.
 
-In medium and high-income groups, attrition rates are significantly lower overall and decline more clearly with increasing job satisfaction. This suggests that higher income may buffer the negative impact of low satisfaction. Overall, the results indicate that income and job satisfaction interact, with the highest attrition risk concentrated among employees who experience both low pay and low satisfaction.
-
-### 4.7.3 Experience and Overtime ###
+### 4.7.2 Experience and Overtime ###
 
 ```sql
 SELECT
@@ -848,7 +820,7 @@ The visualization typically shows that attrition is highest during the first two
 
 <img width="999" height="799" alt="Dashboard 3 (1)" src="https://github.com/user-attachments/assets/bcede8c5-e5b4-4d71-912e-b5f097f2d833" />
 
-The visualization shows a clear relationship between work experience and employee attrition, with the highest attrition rates occurring during the first 0–2 years at the company. As employee tenure increases, attrition steadily decreases, indicating that employees become more stable over time. This pattern suggests that the early stage of employment is the most critical period for retention, as employees are more likely to leave during their initial years.
+The visualization shows a clear relationship between work experience and employee attrition, with the highest attrition rates occurring during the first 0–2 years at the company. 
 
 ## 5.5 Attrition by Overtime ##
 
@@ -868,13 +840,15 @@ This view is important because it highlights differences in attrition that are n
 
 <img width="999" height="799" alt="Dashboard 6" src="https://github.com/user-attachments/assets/858f24e1-6ff9-40f7-a9ff-544d5f93c2e7" />
 
-The visualization shows that attrition varies across departments, with Sales having the highest attrition rate (20.6%), followed by Human Resources (19.0%), while Research & Development has the lowest (13.8%). This indicates that turnover is more concentrated in certain departments, particularly in Sale
+The visualization shows that attrition varies across departments, with Sales having the highest attrition rate (20.6%), followed by Human Resources (19.0%), while Research & Development has the lowest (13.8%). This indicates that turnover is more concentrated in certain departments, particularly in sales.
 
 <img width="999" height="799" alt="Dashboard 7" src="https://github.com/user-attachments/assets/779b8d6d-6448-4629-89b4-7a6b80892489" />
 
 The visualization shows significant differences in attrition across job roles, with Sales Representatives experiencing by far the highest attrition rate (39.8%), followed by Laboratory Technicians (23.9%) and Human Resources roles (23.1%). In contrast, managerial and senior positions such as Research Director (2.5%) and Manager (4.9%) have the lowest attrition rates. This indicates that turnover is concentrated in more operational and customer-facing roles, while higher-level and specialized positions are more stable, suggesting that job role is a key factor influencing employee attrition.
 
-## 5.7 Combined View: Management Level and Overtime ##
+Because job role and department are related, these results should not be interpreted as independent effects.
+
+## 5.8 Combined View: Management Level and Overtime ##
 
 This visualization combines management level and overtime to show how workload affects different employee groups, typically using a grouped bar chart.
 
@@ -894,47 +868,17 @@ Overall, the visual analysis supports the conclusion that attrition is influence
 
 # 6. ACT #
 
-The purpose of this stage is to translate the analytical findings into clear and practical recommendations for reducing employee attrition. The analysis showed that attrition is not evenly distributed across the organization but is concentrated among specific groups, particularly entry-level employees, lower-income employees, and those working overtime. Therefore, targeted actions are required.
+This analysis shows that attrition is not evenly distributed across employees. It is highest among entry-level employees, lower income groups, and employees with less than two years of experience. Overtime and lower job satisfaction are also associated with higher attrition, particularly at lower management levels.
 
-### Key Recommendations ###
+Attrition is also more common in certain departments and roles, especially in sales-related positions. These patterns suggest that turnover is concentrated in specific groups rather than across the entire organization.
 
-**1. Strengthen retention at the entry level**
+### Recommendations ###
 
-Entry-level employees have the highest attrition rate, especially during the first two years. This indicates that early career stages are critical for retention. Organizations should improve onboarding processes, provide mentoring, and ensure clear career development opportunities. Regular feedback during the first year can help identify issues early.
+Based on these findings, the following actions may help reduce attrition:
+- Support early-career employees through onboarding, mentoring, and development programs
+- Review compensation in lower income groups to improve retention
+- Improve job satisfaction, especially at entry-level positions
+- Manage overtime and workload to reduce burnout risk
+- Focus on high-attrition roles, particularly in sales
 
-**2. Manage workload and reduce overtime**
-
-Overtime is strongly associated with higher attrition across all management levels, with the strongest effect at the entry level. Companies should monitor overtime, redistribute workload where needed, and ensure sufficient staffing. Reducing excessive workload can improve both retention and employee well-being.
-
-**3. Review compensation for lower-income employees**
-
-The analysis shows that lower-paid employees are more likely to leave the organization. It is important to review salary levels, ensure competitive compensation, and provide clear pay progression. Financial incentives may be particularly effective in high-turnover roles.
-
-**4. Improve job satisfaction**
-
-Low job satisfaction is closely linked to higher attrition, especially among entry-level employees. Organizations should regularly collect employee feedback, improve communication between managers and employees, and provide recognition and development opportunities.
-
-**5. Apply targeted strategies in high-risk departments and roles**
-
-Attrition is higher in departments such as Sales and in operational roles. This suggests the need for department-specific actions, such as reviewing workload, performance expectations, and working conditions in these areas.
-
-
-### Priority Areas ###
-
-Based on the findings, the most important areas to address are:
-- Early-career employees (0–2 years)
-- Employees working overtime
-- Low-income roles and high-risk departments (e.g., Sales)
-
-Focusing on these groups is likely to have the greatest impact on reducing overall attrition.
-
-### Expected Benefits ###
-
-Implementing these recommendations can lead to:
-- reduced employee turnover and recruitment costs
-- improved employee satisfaction and engagement
-- greater workforce stability
-- more effective, data-driven HR decisions
-
-In conclusion, employee attrition can be reduced by focusing on the groups with the highest risk and addressing key factors such as workload, compensation, and job satisfaction. Rather than applying a single general solution, organizations should use targeted and data-driven strategies to improve retention outcomes.
-
+This analysis identifies key patterns in employee attrition but does not establish causal relationships. The results provide a clear basis for targeting retention efforts where they are most needed.
