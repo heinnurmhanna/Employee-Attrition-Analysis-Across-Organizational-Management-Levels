@@ -1,18 +1,3 @@
-# Töö kokkuvõte - spikker #
-
-**Eesmärk:** Selle projekti eesmärk on uurida töötajate lahkumist (attrition) organisatsiooni erinevatel juhtimistasemetel ning tuvastada peamised tegurid, mis seda mõjutavad. 
-
-Algselt oli plaan kasutada enda töökoha andmeid, kuid kuna need olid piiratud nii mahu kui ka mitmekesisuse poolest, otsustati kasutada Kaggle’i platvormilt pärit IBM HR Analytics andmestikku. See võimaldas kasutada mitmekülgsemaid analüüsimeetodeid ja tööriistu, eelkõige SQL-i ja Google BigQueryt, ning läbi viia põhjalikuma analüüsi.
-
-Analüüsi **keskne uurimisküsimus on**, kuidas erineb töötajate lahkumine organisatsiooni juhtimistasemete lõikes. Lisaks sellele uuriti, millisel tasemel on lahkumine kõige suurem ning kas lahkumine on seotud selliste teguritega nagu palk, töörahulolu ja töökogemus. Samuti käsitleti, kas töötingimused, näiteks ületunnid ja töö- ja eraelu tasakaal, võivad mõjutada töötajate lahkumist.
-
-Andmestik pärineb IBM HR Analytics simulatsioonist ning sisaldab infot töötajate demograafiliste tunnuste, ametikohtade, palga, rahulolu ja lahkumise kohta. Andmed imporditi Google BigQuery keskkonda, kus viidi läbi kogu andmete töötlemine ja analüüs. Andmete kvaliteeti kontrolliti mitmes etapis: veenduti, et andmestik sisaldab õiget arvu kirjeid, duplikaate ei esine ning olulistes tunnustes puuduvad väärtused puuduvad. Analüüsi lihtsustamiseks loodi täiendavad tunnused, näiteks juhtimistaseme kirjeldus (management_level) ja binaarne tunnus lahkumise kohta (attrition_flag).
-
-**Analüüsi tulemused näitavad selget seost juhtimistaseme ja töötajate lahkumise vahel.** Kõrgeim lahkumismäär esineb madalaimal ehk entry-level tasemel, kus ligikaudu veerand töötajatest lahkub. Mida kõrgem on juhtimistasand, seda väiksem on lahkumismäär, kusjuures keskastme ja tippjuhtkonna tasemel on see märkimisväärselt madalam. See viitab sellele, et madalama taseme töötajad on organisatsioonist lahkumise suhtes kõige haavatavamad.
-
-Uurin nii palka, töörahulolu, töökogemust. Lisaks on plaanis kasutada Tableaud visuaalide tegemiseks ning viimasena teen kokkuvõtte. 
-
-
 # INTRODUCTION # 
 
 Employee attrition is a critical issue for organizations because frequent employee turnover can increase recruitment costs, disrupt work processes, and negatively affect organizational performance. Understanding the factors that influence employee attrition is therefore essential for effective human resource management.
@@ -883,10 +868,11 @@ This view is important because it highlights differences in attrition that are n
 
 <img width="999" height="799" alt="Dashboard 6" src="https://github.com/user-attachments/assets/858f24e1-6ff9-40f7-a9ff-544d5f93c2e7" />
 
+The visualization shows that attrition varies across departments, with Sales having the highest attrition rate (20.6%), followed by Human Resources (19.0%), while Research & Development has the lowest (13.8%). This indicates that turnover is more concentrated in certain departments, particularly in Sale
+
 <img width="999" height="799" alt="Dashboard 7" src="https://github.com/user-attachments/assets/779b8d6d-6448-4629-89b4-7a6b80892489" />
 
-
-The results typically show that departments such as Sales and roles such as Sales Representative have the highest attrition, while roles in Research & Development and higher-level positions show lower turnover. This indicates that the nature of the work and working conditions also influence attrition.
+The visualization shows significant differences in attrition across job roles, with Sales Representatives experiencing by far the highest attrition rate (39.8%), followed by Laboratory Technicians (23.9%) and Human Resources roles (23.1%). In contrast, managerial and senior positions such as Research Director (2.5%) and Manager (4.9%) have the lowest attrition rates. This indicates that turnover is concentrated in more operational and customer-facing roles, while higher-level and specialized positions are more stable, suggesting that job role is a key factor influencing employee attrition.
 
 ## 5.7 Combined View: Management Level and Overtime ##
 
@@ -894,14 +880,61 @@ This visualization combines management level and overtime to show how workload a
 
 This view is important because it reveals interactions between variables. Instead of analyzing overtime separately, it shows how its impact varies across the organizational hierarchy.
 
+<img width="999" height="799" alt="Dashboard 8" src="https://github.com/user-attachments/assets/0d36488b-371b-4d66-b5e3-12511cd6d0a1" />
 
+The visualization shows that employee attrition is consistently higher among those who work overtime across all management levels. The difference is especially pronounced at the entry level, where attrition increases dramatically from 15.8% (no overtime) to 52.6% (with overtime). A similar, though less extreme, pattern can be observed among junior and middle management employees, indicating that overtime is strongly associated with higher turnover.
 
-The visualization typically demonstrates that overtime has the strongest effect on entry-level employees, where attrition increases sharply when overtime is present. This suggests that workload pressure disproportionately affects lower-level employees.
+At higher management levels, overall attrition remains relatively low, but overtime still increases the likelihood of leaving. This suggests that workload and work-life balance are important factors influencing employee retention across the organization. Overall, the results indicate that overtime has the strongest negative impact on lower-level employees, highlighting the need for targeted workload management and retention strategies, particularly at the early stages of employees’ careers.
 
 ## 5.8 Summary of Visual Findings ##
 
 The visualizations confirm that employee attrition is not evenly distributed across the organization. Instead, it is concentrated among entry-level employees, lower-income groups, and employees with short tenure. Additional patterns show that overtime and job satisfaction further influence attrition, especially when combined with other risk factors.
 
-Overall, the visual analysis supports the conclusion that attrition is influenced by multiple interacting factors. By presenting these relationships visually, the findings become easier to interpret and more useful for identifying high-risk employee groups and informing targeted retention strategies.
+Overall, the visual analysis supports the conclusion that attrition is influenced by multiple interacting factors. By presenting these relationships visually, the findings become easier to interpret and more useful for identifying high-risk employee groups and informing targeted retention strategies
 
+# 6. ACT #
+
+The purpose of this stage is to translate the analytical findings into clear and practical recommendations for reducing employee attrition. The analysis showed that attrition is not evenly distributed across the organization but is concentrated among specific groups, particularly entry-level employees, lower-income employees, and those working overtime. Therefore, targeted actions are required.
+
+### Key Recommendations ###
+
+**1. Strengthen retention at the entry level**
+
+Entry-level employees have the highest attrition rate, especially during the first two years. This indicates that early career stages are critical for retention. Organizations should improve onboarding processes, provide mentoring, and ensure clear career development opportunities. Regular feedback during the first year can help identify issues early.
+
+**2. Manage workload and reduce overtime**
+
+Overtime is strongly associated with higher attrition across all management levels, with the strongest effect at the entry level. Companies should monitor overtime, redistribute workload where needed, and ensure sufficient staffing. Reducing excessive workload can improve both retention and employee well-being.
+
+**3. Review compensation for lower-income employees**
+
+The analysis shows that lower-paid employees are more likely to leave the organization. It is important to review salary levels, ensure competitive compensation, and provide clear pay progression. Financial incentives may be particularly effective in high-turnover roles.
+
+**4. Improve job satisfaction**
+
+Low job satisfaction is closely linked to higher attrition, especially among entry-level employees. Organizations should regularly collect employee feedback, improve communication between managers and employees, and provide recognition and development opportunities.
+
+**5. Apply targeted strategies in high-risk departments and roles**
+
+Attrition is higher in departments such as Sales and in operational roles. This suggests the need for department-specific actions, such as reviewing workload, performance expectations, and working conditions in these areas.
+
+
+### Priority Areas ###
+
+Based on the findings, the most important areas to address are:
+- Early-career employees (0–2 years)
+- Employees working overtime
+- Low-income roles and high-risk departments (e.g., Sales)
+
+Focusing on these groups is likely to have the greatest impact on reducing overall attrition.
+
+### Expected Benefits ###
+
+Implementing these recommendations can lead to:
+- reduced employee turnover and recruitment costs
+- improved employee satisfaction and engagement
+- greater workforce stability
+- more effective, data-driven HR decisions
+
+In conclusion, employee attrition can be reduced by focusing on the groups with the highest risk and addressing key factors such as workload, compensation, and job satisfaction. Rather than applying a single general solution, organizations should use targeted and data-driven strategies to improve retention outcomes.
 
