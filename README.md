@@ -864,7 +864,11 @@ This view is important because it helps identify critical periods in an employee
 
 The visualization typically shows that attrition is highest during the first two years and decreases with longer tenure. This highlights the importance of early-career retention strategies and suggests that organizations should focus on supporting employees during their initial period.
 
-## 5.5 5Attrition by Overtime ##
+<img width="999" height="799" alt="Dashboard 3 (1)" src="https://github.com/user-attachments/assets/bcede8c5-e5b4-4d71-912e-b5f097f2d833" />
+
+The visualization shows a clear relationship between work experience and employee attrition, with the highest attrition rates occurring during the first 0–2 years at the company. As employee tenure increases, attrition steadily decreases, indicating that employees become more stable over time. This pattern suggests that the early stage of employment is the most critical period for retention, as employees are more likely to leave during their initial years.
+
+## 5.5 Attrition by Overtime ##
 
 This visualization compares attrition rates between employees who work overtime and those who do not.
 
