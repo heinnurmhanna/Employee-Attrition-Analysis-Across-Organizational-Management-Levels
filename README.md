@@ -829,8 +829,6 @@ This visualization presents attrition rates across different management levels u
 
 This view is important because it directly addresses the main research question: how attrition differs across organizational hierarchy. By comparing attrition rates visually, it becomes easier to identify which levels experience the highest turnover.
 
-The visualization clearly highlights that attrition is concentrated among entry-level employees, while higher management levels show significantly lower turnover. This confirms that attrition is not evenly distributed across the organization and helps identify where retention efforts should be prioritized.
-
 <img width="999" height="799" alt="Dashboard 2" src="https://github.com/user-attachments/assets/5691188f-04f7-4ec7-a067-6c26cc83b675" />
 
 ## 5.2 Attrition by Income Group ##
@@ -838,8 +836,6 @@ The visualization clearly highlights that attrition is concentrated among entry-
 This visualization shows attrition rates across income groups (low, medium, and high) using a bar chart.
 
 This view is important because it helps assess whether compensation is related to employee turnover. Salary is a fundamental factor in employment decisions, and visualizing attrition across income levels makes it easier to evaluate its impact.
-
-The chart typically shows that employees in the low-income group have the highest attrition, while higher-income groups show lower turnover. This supports the conclusion that lower compensation is associated with higher attrition and suggests that salary may play a key role in employee retention.
 
 <img width="999" height="799" alt="Dashboard 1" src="https://github.com/user-attachments/assets/e898305e-5059-4f15-87ab-15afb2885c8f" />
 
@@ -850,11 +846,9 @@ This visualization presents the relationship between job satisfaction and attrit
 
 This view is important because it allows comparison of how job satisfaction affects different employee groups. Instead of looking at satisfaction in isolation, this visualization shows whether its impact varies across the organizational hierarchy.
 
-The results typically indicate that job satisfaction has the strongest effect on attrition among entry-level employees, while its impact is weaker at higher management levels. This suggests that improving job satisfaction may be particularly important for retaining lower-level employees.
-
 <img width="999" height="799" alt="Dashboard 3" src="https://github.com/user-attachments/assets/08a7980e-f190-4140-9268-0253edc0a950" />
 
-This heatmap shows that job satisfaction has a strong impact on attrition, particularly at the entry-level, where employees with low satisfaction (level 1) have the highest attrition rate (39%), which steadily decreases as satisfaction increases. In contrast, higher management levels such as senior and executive positions exhibit consistently low attrition regardless of satisfaction levels, indicating greater stability. While job satisfaction still influences attrition among junior and middle management employees, the effect is less pronounced than at the entry level. Overall, the visualization suggests that improving job satisfaction is especially critical for retaining lower-level employees, whereas higher-level employees are less sensitive to changes in satisfaction.
+This heatmap shows that job satisfaction has a strong impact on attrition, particularly at the entry-level, where employees with low satisfaction (level 1) have the highest attrition rate (39%), which steadily decreases as satisfaction increases. In contrast, higher management levels such as senior and executive positions exhibit consistently low attrition regardless of satisfaction levels, indicating greater stability. While job satisfaction still influences attrition among junior and middle management employees, the effect is less pronounced than at the entry level.
 
 ## 5.4 Attrition by Work Experience ##
 
