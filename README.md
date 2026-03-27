@@ -786,7 +786,7 @@ This visualization presents attrition rates across different management levels u
 
 This view is important because it directly addresses the main research question: how attrition differs across organizational hierarchy. By comparing attrition rates visually, it becomes easier to identify which levels experience the highest turnover.
 
-<img width="999" height="799" alt="Dashboard 2" src="https://github.com/user-attachments/assets/5691188f-04f7-4ec7-a067-6c26cc83b675" />
+<img width="999" height="799" alt="Dashboard 2 (3)" src="https://github.com/user-attachments/assets/13d19f58-abf2-4330-86e5-bb58912c923a" />
 
 The visualization shows that attrition is highest among entry-level employees (26.3%), significantly exceeding all other management levels, which indicates that lower-level employees are the most likely to leave the organization. Attrition is highest at the lowest level and generally lower at higher levels, with middle management showing moderate turnover (14.7%), while junior, executive, and especially senior management levels have considerably lower attrition rates. This pattern suggests a clear negative relationship between organizational level and attrition, where employees in higher positions are more stable, likely due to better compensation, career progression, and job security.
 
